@@ -1,1 +1,60 @@
 
+package com.mycompany.mavenproject8;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Mavenproject8 {
+
+    static String[] elementosUrbanos = {
+        "Cruza en semáforo sonoro",
+        "Camina por vereda con rampa",
+        "Evita obstáculo: poste en medio de la acera",
+        "Espera a que pasen los peatones",
+        "Sigue recto por calle tranquila",
+        "Cruza en paso peatonal marcado",
+        "Ten cuidado con obra en la vereda",
+        "Toma desvío hacia calle accesible",
+        "Gira a la derecha en esquina segura",
+        "Gira a la izquierda donde hay rampa"
+    };
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el punto de origen: ");
+        String origen = scanner.nextLine();
+
+        System.out.print("Ingrese el punto de destino: ");
+        String destino = scanner.nextLine();
+
+        System.out.println("\nInicio de ruta accesible");
+        System.out.println("Origen: " + origen);
+        System.out.println("Destino: " + destino);
+        System.out.println("---------------------------------");
+
+        Random rand = new Random();
+
+        System.out.println("Iniciando desde " + origen);
+        esperar(1500);
+
+        // Generar 5 pasos aleatorios
+        for (int i = 0; i < 5; i++) {
+            int indice = rand.nextInt(elementosUrbanos.length);
+            String paso = elementosUrbanos[indice];
+            System.out.println(paso);
+            esperar(2000);
+        }
+
+        System.out.println("Has llegado a tu destino: " + destino);
+        System.out.println("Fin del recorrido accesible.");
+
+        scanner.close();
+    }
+
+    private static void esperar(int milisegundos) {
+        try {
+            Thread.sleep(milisegundos);
+        } catch (InterruptedException e) {
+        }
+    }
+}
